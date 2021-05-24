@@ -6,6 +6,16 @@ function palindrome(str) {
   return str.replace(/[^0-9a-z]/gi, '').toLowerCase().split('').reverse().join('') === str.replace(/[^0-9a-z]/gi, '').toLowerCase();
 }
 
+function palindromeVars(str) {
+
+  // Longer, with variables
+
+  str = str.replace(/[^0-9a-z]/gi, '').toLowerCase();
+  rev = str.split('').reverse().join('');
+
+  return str === rev;
+}
+
 function palindromeManual(str) {
 
   // Slow, manual version
@@ -47,6 +57,23 @@ console.log(palindrome("0_0 (: /-\ :) 0-0"));
 console.log(palindrome("five|\_/|four"));
 
 // Performance tests
+console.log('\n\n[*] Timing vars...');
+console.time('Vars');
+palindromeVars("eye");
+palindromeVars("_eye");
+palindromeVars("race car");
+palindromeVars("not a palindrome");
+palindromeVars("A man, a plan, a canal. Panama");
+palindromeVars("never odd or even");
+palindromeVars("nope");
+palindromeVars("almostomla");
+palindromeVars("My age is 0, 0 si ega ym.");
+palindromeVars("1 eye for of 1 eye.");
+palindromeVars("0_0 (: /-\ :) 0-0");
+palindromeVars("five|\_/|four");
+console.timeEnd('Vars');
+console.log('[+] Vars done');
+
 console.log('\n[*] Timing One liner...');
 console.time('One liner');
 palindrome("eye");
@@ -64,7 +91,7 @@ palindrome("five|\_/|four");
 console.timeEnd('One liner');
 console.log('[+] One liner done');
 
-console.log('\n\n[*] Timing manual...');
+console.log('\n[*] Timing manual...');
 console.time('Manual');
 palindromeManual("eye");
 palindromeManual("_eye");
