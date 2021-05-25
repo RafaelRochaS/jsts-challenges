@@ -1,5 +1,7 @@
 // From: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/palindrome-checker
 
+import { timing } from './utils.js';
+
 function palindrome(str) {
 
   // Short, fast version
@@ -11,7 +13,7 @@ function palindromeVars(str) {
   // Longer, with variables
 
   str = str.replace(/[^0-9a-z]/gi, '').toLowerCase();
-  rev = str.split('').reverse().join('');
+  let rev = str.split('').reverse().join('');
 
   return str === rev;
 }
@@ -22,8 +24,8 @@ function palindromeManual(str) {
 
   str = str.replace(/[^0-9a-z]/gi, '').toLowerCase();
 
-  strArr = [];
-  reverseArr = [];
+  let strArr = [];
+  let reverseArr = [];
 
   for (let c of str) {
     strArr.push(c);
@@ -43,18 +45,18 @@ function palindromeManual(str) {
 }
 
 // Freecodecamp tests
-console.log(palindrome("eye"));
-console.log(palindrome("_eye"));
-console.log(palindrome("race car"));
-console.log(palindrome("not a palindrome"));
-console.log(palindrome("A man, a plan, a canal. Panama"));
-console.log(palindrome("never odd or even"));
-console.log(palindrome("nope"));
-console.log(palindrome("almostomla"));
-console.log(palindrome("My age is 0, 0 si ega ym."));
-console.log(palindrome("1 eye for of 1 eye."));
-console.log(palindrome("0_0 (: /-\ :) 0-0"));
-console.log(palindrome("five|\_/|four"));
+// console.log(palindrome("eye"));
+// console.log(palindrome("_eye"));
+// console.log(palindrome("race car"));
+// console.log(palindrome("not a palindrome"));
+// console.log(palindrome("A man, a plan, a canal. Panama"));
+// console.log(palindrome("never odd or even"));
+// console.log(palindrome("nope"));
+// console.log(palindrome("almostomla"));
+// console.log(palindrome("My age is 0, 0 si ega ym."));
+// console.log(palindrome("1 eye for of 1 eye."));
+// console.log(palindrome("0_0 (: /-\ :) 0-0"));
+// console.log(palindrome("five|\_/|four"));
 
 // Performance tests
 console.log('\n\n[*] Timing vars...');
@@ -73,6 +75,8 @@ palindromeVars("0_0 (: /-\ :) 0-0");
 palindromeVars("five|\_/|four");
 console.timeEnd('Vars');
 console.log('[+] Vars done');
+
+timing(palindromeVars, "eye");
 
 console.log('\n[*] Timing One liner...');
 console.time('One liner');
