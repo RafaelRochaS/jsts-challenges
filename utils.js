@@ -1,23 +1,16 @@
-const asterisk = '[*]'.yellow;
-const done = '[+]'.blue;
-const alert = '[-]'.red
+import chalk from "chalk";
 
 export function timing(fn, ...args) {
-  console.log(`\n[*] Timing ${fn.name}...`);
-  printAsterisk();
-  console.log(`Arguments: ${args}`);
-  console.log('[*] Execution:\n----------------------------');
+  console.log(chalk.yellow('\n[*]'), `Timing ${fn.name}...`);
+  console.log(chalk.yellow('[*]'), 'Arguments: ', args);
+  console.log(chalk.yellow('[*]'),'Execution:\n----------------------------');
   console.time(`${fn.name}`);
-  fn(...args);
+  try {
+    fn(...args);
+  } catch (error) {
+    console.log(chalk.red('[-]'), `execution failed: ${error.message}`);
+  }
   console.timeEnd(`${fn.name}`);
-  console.log(`----------------------------\n[+] ${fn.name} done`);
-}
-
-console.log('\x1b[33m', '[*] ');
-console.log('\x1b[34m', '[+] ');
-console.log('\x1b[31m', '[-] ');
-
-function printAsterisk() {
-  process.stdout.write('\x1b[33m', '[*] ');
-  console.log('\x1b[0m');
+  console.log('----------------------------');
+  console.log(chalk.green('[+]'), `${fn.name} done\n`);
 }
