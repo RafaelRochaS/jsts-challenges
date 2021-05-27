@@ -1,6 +1,7 @@
 import chalk from "chalk";
 
 export function timing(fn, ...args) {
+  
   console.log(chalk.yellow('\n[*]'), `Timing ${fn.name}...`);
   console.log(chalk.yellow('[*]'), 'Arguments: ', args);
   console.log(chalk.yellow('[*]'),'Execution:\n----------------------------');
