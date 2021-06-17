@@ -7,7 +7,7 @@ export function timing(fn, ...args) {
   console.log(chalk.yellow('[*]'),'Execution:\n----------------------------');
   console.time(`${fn.name}`);
   try {
-    fn(...args);
+    console.log(fn(...args));
   } catch (error) {
     console.log(chalk.red('[-]'), `execution failed: ${error.message}`);
   }
